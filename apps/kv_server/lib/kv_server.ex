@@ -3,8 +3,7 @@ defmodule KVServer do
 
   use Application
 
-  # See http://elixir-lang.org/docs/stable/elixir/Application.html
-  # for more information on OTP Applications
+  @doc false
   def start(_type, _args) do
     import Supervisor.Spec
 
@@ -20,6 +19,9 @@ defmodule KVServer do
     Supervisor.start_link(children, opts)
   end
 
+  @doc """
+  Starts accepting connections on the given `port`.
+  """
   def accept(port) do
     # The options below mean:
     #
