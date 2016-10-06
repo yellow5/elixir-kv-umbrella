@@ -8,8 +8,9 @@ defmodule KVServerTest do
   end
 
   setup do
+    port = Application.fetch_env!(:kv_server, :port)
     opts = [:binary, packet: :line, active: false]
-    {:ok, socket} = :gen_tcp.connect('localhost', 4040, opts)
+    {:ok, socket} = :gen_tcp.connect('localhost', port, opts)
     {:ok, socket: socket}
   end
 
